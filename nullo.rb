@@ -30,6 +30,10 @@ module NulloObject
       end
     end
 
+    def _nullo
+      @parent_object
+    end
+
     def if_nil(string_when_nil='')
       if @parent_object.nil?
         string_when_nil
