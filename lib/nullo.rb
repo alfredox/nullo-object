@@ -27,7 +27,7 @@ module NulloObject
   end
 end
 
-# Object class monkey-patch
+# Object monkey-patch
 class Object
   def nullo
     NulloObject::Nullo.new self

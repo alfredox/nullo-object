@@ -1,4 +1,4 @@
-require './nullo'
+require './lib/nullo'
 
 describe "nullo" do
 
