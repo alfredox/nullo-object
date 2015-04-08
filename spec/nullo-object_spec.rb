@@ -1,4 +1,4 @@
-require './lib/nullo'
+require './lib/nullo-object'
 
 describe "nullo" do
 

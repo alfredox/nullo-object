@@ -9,6 +9,22 @@ module NulloObject
       @parent_object
     end
 
+    def nil?
+      @parent_object.nil?
+    end
+
+    def blank?
+      @parent_object.blank?
+    end
+
+    def to_s
+      if @parent_object.nil?
+        @string_when_nil
+      else
+        @parent_object.to_s
+      end
+    end
+
     def if_nil(value_when_nil = nil)
       if @parent_object.nil?
         value_when_nil
@@ -21,7 +37,7 @@ module NulloObject
       if @parent_object.nil?
         ::NulloObject::Nullo.new nil
       else
-        ::NulloObject::Nullo.new @parent_object.send(method, *args, &block)
+        ::NulloObject::Nullo.new(@parent_object.send(method, *args, &block))
       end
     end
   end
