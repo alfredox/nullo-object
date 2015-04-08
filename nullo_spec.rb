@@ -2,31 +2,32 @@ require './nullo'
 
 describe "nullo" do
 
-  context "general" do
-
-    it "shoud return the same object when xxx is called" do
-
-    end
-
-  end
-
   context "when object is nil" do
-    let(:instance) { Nullo.new(nil) }
+    instance = nil
 
-    it "nil? should be true" do
-      instance.nil?.should == true
+    it "should respond true to nil?" do
+      expect(instance.nullo).to be_nil
+    end
+
+    it "it should return x for nil objects, if if_nil(x) is passed" do
+      expect(instance.nullo.if_nil(420)).to eq(420)
     end
 
   end
 
-  context "when object is a String" do
-    let(:instance) { Nullo.new('Test String') }
+  context "when object is not nil" do
+    instance = 'test string'
+
     it "should be chainable" do
-      instance.upcase.downcase.should == 'test string'
+      expect(instance.nullo.upcase.downcase.if_nil('')).to eq('test string')
     end
+
     it "should be chainable when one of the methods return nil" do
-      # the method upcase! returns nil
-      instance.upcase.upcase!.downcase.should == nil
+      expect(instance.nullo.upcase.upcase!.downcase).to be_nil
+    end
+
+    it "should ignore if_nil" do
+      expect(instance.nullo.upcase.if_nil('derp')).to eq('TEST STRING')
     end
   end
 
